@@ -14,17 +14,47 @@ tuner.add(tripleOscillator);
 
 tuner.updatePitch() // The tuner is now calculating the pitch and note name of its input 60 times per second. These values are stored in <code>tuner.pitch</code> and <code>tuner.noteName</code>.
 
+let colorScreen = document.getElementById('colorscreen')
+let backerColor = 'red'
+
+
 let logPitch = function() {
   console.log(tuner.pitch, tuner.noteName)
   requestAnimationFrame(logPitch)
-  let colorScreen = document.getElementById('colorscreen')
   if (tuner.pitch == '209') {
-    colorScreen.style.backgroundColor = 'blue'
+    return backerColor = 'blue'
   } else {
-    colorScreen.style.backgroundColor = 'red'
+    return backerColor = 'red'
   }
 };
-logPitch();
-// If you sing into your microphone, your pitch will be logged to the console in real time.
+// logPitch();
 
-// tuner.stopUpdatingPitch(); // Stop calculating the pitch if you don't need to know it anymore.
+const buttonPlay = document.getElementById('player');
+
+
+const socket = io.connect();
+
+document.addEventListener('click', function(e) {
+  e.preventDefault();
+  socket.emit('oscillator', backerColor)
+  console.log(backerColor)
+})
+socket.on('oscillator', function(msg) {
+  colorscreen.style.backgroundColor = backerColor
+})
+
+
+// socket.emit('oscillator', logPitch);
+// socket.on('oscillator', function(data) {
+// 	colorScreen.style.backgroundColor = msg
+// 	console.log(backerColor)
+// })
+
+// socket.on('oscillator', function(data){
+// 	if (backerColor == '') {
+// 		colorscreen.style.backgroundColor = data.description
+// 	} else {
+// 		colorscreen.style.backgroundColor = backerColor
+// 	}
+
+// })
