@@ -12,7 +12,7 @@ let backerColor = null
 var logPitch = function(){
     console.log(tuner.pitch, tuner.noteName);
     requestAnimationFrame(logPitch);
-    if (tuner.pitch > '0' && tuner.pitch < '1500') {
+    if (tuner.pitch > '1500' && tuner.pitch < '10000') {
     return backerColor = 'blue'
   } else {
     return backerColor = 'red'
@@ -36,11 +36,11 @@ const socket = io.connect();
 
 buttonPlay.addEventListener('click', function(e) {
   e.preventDefault();
-  socket.emit('oscillator', logPitch, backerColor)
+  socket.emit('oscillator2', logPitch, backerColor)
   console.log(backerColor)
 })
 
-socket.on('oscillator', function(msg) {
+socket.on('oscillator2', function(msg) {
   logPitch
   colorscreen.style.backgroundColor = backerColor;
 })

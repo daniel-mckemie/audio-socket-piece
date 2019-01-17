@@ -10,13 +10,17 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/about', function(req, res) {
+  res.sendFile(__dirname + '/public/index2.html');
+});
+
 
 io.on('connection', function(socket) {
   socket.on('oscillator', function(msg) {
     io.emit('oscillator', msg)
   });
-  socket.on('changePitch', function(msg) {
-  	io.emit('changePitch', msg)
+  socket.on('oscillator2', function(msg) {
+  	io.emit('oscillator2', msg)
   })
 });
 
