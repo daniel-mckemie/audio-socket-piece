@@ -15,6 +15,9 @@ io.on('connection', function(socket) {
   socket.on('oscillator', function(msg) {
     io.emit('oscillator', msg)
   });
+  socket.on('changePitch', function(msg) {
+  	io.emit('changePitch', msg)
+  })
 });
 
 http.listen(3000, function() {

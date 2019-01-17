@@ -4,16 +4,23 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon"
+    "start": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daniel-mckemie/audio-socket-piece.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daniel-mckemie/audio-socket-piece/issues"
+  },
+  "homepage": "https://github.com/daniel-mckemie/audio-socket-piece#readme",
   "dependencies": {
     "express": "^4.16.4",
     "nodemon": "^1.18.9",
     "socket.io": "^2.2.0",
     "web-audio-daw": "^4.2.2"
-  },
-  "devDependencies": {}
+  }
 }
