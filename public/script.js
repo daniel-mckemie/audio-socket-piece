@@ -1,5 +1,10 @@
-var voice = new Wad({source : 'mic' }); // At this point, your browser will ask for permission to access your microphone.
-var tuner = new Wad.Poly();
+let voice = new Wad({source : 'mic' }); // At this point, your browser will ask for permission to access your microphone.
+// let voice = new Tone.UserMedia([1])
+
+let tuner = new Wad.Poly();
+
+
+
 tuner.setVolume(0); // If you're not using headphones, you can eliminate microphone feedback by muting the output from the tuner.
 tuner.add(voice);
 
@@ -9,13 +14,37 @@ tuner.updatePitch() // The tuner is now calculating the pitch and note name of i
 
 let backerColor = null
 
-var logPitch = function(){
+let logPitch = function(){
     console.log(tuner.pitch, tuner.noteName);
     requestAnimationFrame(logPitch);
-    if (tuner.pitch > '0' && tuner.pitch < '1500') {
-    return backerColor = 'blue'
-  } else {
-    return backerColor = 'red'
+  
+
+  switch (true) {
+  	case (tuner.pitch < '200'):
+  		backerColor = 'red';
+  		break;
+  	case (tuner.pitch < '300'):
+  		backerColor = 'orange';
+  		break;
+  	case (tuner.pitch < '700'):
+  		backerColor = 'yellow';
+  		break;
+  	case (tuner.pitch < '1200'):
+  		backerColor = 'green';
+  		break;
+  	case (tuner.pitch < '3500'):
+  		backerColor = 'blue';
+  		break;
+  	case (tuner.pitch < '6500'):
+  		backerColor = 'indigo';
+  		break;
+  	case (tuner.pitch < '20000'):
+  		backerColor = 'violet';
+  		break;
+  	case (tuner.pitch == '24000'):
+  		backerColor = backerColor;
+  		break;
+
   }
 };
 
@@ -37,7 +66,7 @@ const socket = io.connect();
 buttonPlay.addEventListener('click', function(e) {
   e.preventDefault();
   socket.emit('oscillator', logPitch, backerColor)
-  console.log(backerColor)
+  // console.log(backerColor)
 })
 
 socket.on('oscillator', function(msg) {

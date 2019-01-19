@@ -37,7 +37,7 @@ const socket = io.connect();
 buttonPlay.addEventListener('click', function(e) {
   e.preventDefault();
   socket.emit('oscillator2', logPitch, backerColor)
-  console.log(backerColor)
+  // console.log(backerColor)
 })
 
 socket.on('oscillator2', function(msg) {
