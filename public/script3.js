@@ -20,30 +20,30 @@ let logPitch = function(){
   
 
   switch (true) {
-  	case (tuner.pitch < '200'):
-  		backerColor = 'red';
-  		break;
-  	case (tuner.pitch < '300'):
-  		backerColor = 'orange';
-  		break;
-  	case (tuner.pitch < '700'):
-  		backerColor = 'yellow';
-  		break;
-  	case (tuner.pitch < '1200'):
-  		backerColor = 'green';
-  		break;
-  	case (tuner.pitch < '3500'):
-  		backerColor = 'blue';
-  		break;
-  	case (tuner.pitch < '6500'):
-  		backerColor = 'indigo';
-  		break;
-  	case (tuner.pitch < '20000'):
-  		backerColor = 'violet';
-  		break;
-  	case (tuner.pitch == '24000'):
-  		backerColor = backerColor;
-  		break;
+    case (tuner.pitch < '200'):
+      backerColor = '#ffffff';
+      break;
+    case (tuner.pitch < '300'):
+      backerColor = '#f0f0f0';
+      break;
+    case (tuner.pitch < '700'):
+      backerColor = '#c0c0c0';
+      break;
+    case (tuner.pitch < '1200'):
+      backerColor = '#909090';
+      break;
+    case (tuner.pitch < '3500'):
+      backerColor = '#606060';
+      break;
+    case (tuner.pitch < '6500'):
+      backerColor = '#303030';
+      break;
+    case (tuner.pitch < '20000'):
+      backerColor = '#000000';
+      break;
+    case (tuner.pitch == '24000'):
+      backerColor = backerColor;
+      break;
 
   }
 };

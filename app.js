@@ -10,18 +10,23 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/about', function(req, res) {
+app.get('/player2', function(req, res) {
   res.sendFile(__dirname + '/public/index2.html');
+});
+
+app.get('/player3', function(req, res) {
+  res.sendFile(__dirname + '/public/index3.html');
+});
+
+app.get('/player4', function(req, res) {
+  res.sendFile(__dirname + '/public/index4.html');
 });
 
 
 io.on('connection', function(socket) {
   socket.on('oscillator', function(msg) {
     io.emit('oscillator', msg)
-  });
-  socket.on('oscillator2', function(msg) {
-  	io.emit('oscillator2', msg)
-  })
+  });  
 });
 
 http.listen(3000, function() {
