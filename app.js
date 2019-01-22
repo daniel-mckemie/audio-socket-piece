@@ -1,34 +1,44 @@
 const express = require('express');
+const socket = require('socket.io');
+
 const app = express();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+
+const server = app.listen(3000, function() {
+  console.log('Listening on port 3000')
+})
+
+const io = socket(server);
 
 
-app.use(express.static(__dirname + '/public'))
 
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
-});
+app.use(express.static('public'));
+
+// app.get('/', function(req, res) {
+//   res.sendFile(__dirname + '/index.html');
+// });
 
 app.get('/player2', function(req, res) {
   res.sendFile(__dirname + '/public/index2.html');
 });
 
-app.get('/player3', function(req, res) {
-  res.sendFile(__dirname + '/public/index3.html');
-});
+// app.get('/player3', function(req, res) {
+//   res.sendFile(__dirname + '/public/index3.html');
+// });
 
-app.get('/player4', function(req, res) {
-  res.sendFile(__dirname + '/public/index4.html');
-});
+// app.get('/player4', function(req, res) {
+//   res.sendFile(__dirname + '/public/index4.html');
+// });
 
 
 io.on('connection', function(socket) {
-  socket.on('oscillator', function(msg) {
-    io.emit('oscillator', msg)
-  });  
-});
+  console.log('Made socket connection', socket.id);
+  socket.on('oscillator', function(data) {
+    io.sockets.emit('oscillator', data)
+  });
 
-http.listen(3000, function() {
-  console.log('listening on port 3000');
+  socket.on('oscillator2', function(data) {
+    io.sockets.emit('oscillator2', data)
+
+  });
+
 });
