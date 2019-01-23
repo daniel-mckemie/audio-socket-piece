@@ -1,15 +1,15 @@
 const socket = io.connect('http://localhost:3000');
 
-let voice = new Wad({ source: 'mic' }); // At this point, your browser will ask for permission to access your microphone.
+let input = new Wad({ source: 'mic' }); // At this point, your browser will ask for permission to access your microphone.
 
 let tuner = new Wad.Poly();
 
 tuner.setVolume(0); // If you're not using headphones, you can eliminate microphone feedback by muting the output from the tuner.
-tuner.add(voice);
+tuner.add(input);
 
-voice.play(); // You must give your browser permission to access your microphone before calling play().
+input.play(); // You must give your browser permission to access your microphone before calling play().
 
-tuner.updatePitch() // The tuner is now calculating the pitch and note name of its input 60 times per second. These values are stored in <code>tuner.pitch</code> and <code>tuner.noteName</code>.
+tuner.updatePitch(); // The tuner is now calculating the pitch and note name of its input 60 times per second. These values are stored in <code>tuner.pitch</code> and <code>tuner.noteName</code>.
 
 let backerColor = null;
 // const backer = document.getElementById('backgroundy');
@@ -55,22 +55,23 @@ logPitch();
 // tuner.stopUpdatingPitch(); // Stop calculating the pitch if you don't need to know it anymore.
 
 
-const buttonPlay = document.getElementById('player');
+const buttonBroadcast = document.getElementById('player');
 
+setInterval(function() { buttonBroadcast.click() }, 100)
 
-setInterval(function() { buttonPlay.click() }, 100)
-
-
-buttonPlay.addEventListener('click', function(e) {
+buttonBroadcast.addEventListener('click', function(e) {
   e.preventDefault();
-  socket.emit('oscillator', {
+  socket.emit('colors', {
     background: backerColor
   });
 });
 
 
 
-socket.on('oscillator', function(data) {
+socket.on('colors', function(data) {
   document.body.style.backgroundColor = data.background;
   // backer.style.backgroundColor = data.background;
 });
+
+
+

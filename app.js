@@ -5,7 +5,7 @@ const app = express();
 
 const server = app.listen(3000, function() {
   console.log('Listening on port 3000')
-})
+});
 
 const io = socket(server);
 
@@ -32,8 +32,8 @@ app.get('/player2', function(req, res) {
 
 io.on('connection', function(socket) {
   console.log('Made socket connection', socket.id);
-  socket.on('oscillator', function(data) {
-    io.sockets.emit('oscillator', data)
+  socket.on('colors', function(data) {
+    io.sockets.emit('colors', data)
   });
 
   socket.on('oscillator2', function(data) {
