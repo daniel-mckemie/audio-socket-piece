@@ -32,12 +32,12 @@ app.get('/player2', function(req, res) {
 
 io.on('connection', function(socket) {
   console.log('Made socket connection', socket.id);
-  socket.on('colors', function(data) {
-    io.sockets.emit('colors', data)
+  socket.on('frequency', function(data) {
+    io.sockets.emit('frequency', data)
   });
 
-  socket.on('oscillator2', function(data) {
-    io.sockets.emit('oscillator2', data)
+  socket.on('frequency2', function(data) {
+    io.sockets.emit('frequency2', data)
 
   });
 

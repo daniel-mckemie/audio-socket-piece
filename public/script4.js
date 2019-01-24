@@ -1,12 +1,12 @@
-let backerColor = null;
-const backer = document.getElementById('backgroundy2');
-
-
 const socket = io.connect();
 
+let backerColor = null;
 
-socket.on('colors', function(data) {
-  document.body.style.backgroundColor = data.background;
+
+
+
+socket.on('frequency', function(data) {
+  // Decision making goes here...
   
 });
 
