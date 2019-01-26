@@ -1,39 +1,37 @@
 const socket = io.connect();
 
-let backerColor = null;
+let numEvents = null;
+
+let numsDiv = document.getElementById('nums')
 
 
 socket.on('frequency', function(data) {
   switch (true) {
-    case (data.pitch < '200'):
-      backerColor = 'red';
+    case (data.pitch < '120'):
+      numEvents = 'soft, long tones';
       break;
-    case (data.pitch < '300'):
-      backerColor = 'orange';
+    case (data.pitch < '400'):
+      numEvents = 'short, pointillism';
       break;
-    case (data.pitch < '700'):
-      backerColor = 'yellow';
+    case (data.pitch < '900'):
+      numEvents = 'silence';
       break;
-    case (data.pitch < '1200'):
-      backerColor = 'green';
+    case (data.pitch < '1500'):
+      numEvents = 'loud, long tones';
       break;
-    case (data.pitch < '3500'):
-      backerColor = 'blue';
+    case (data.pitch < '2200'):
+      numEvents = 'NOISE!';
       break;
-    case (data.pitch < '6500'):
-      backerColor = 'indigo';
+    case (data.pitch < '7000'):
+      numEvents = 'silence';
       break;
-    case (data.pitch < '20000'):
-      backerColor = 'violet';
+    case (data.pitch < '15000'):
+      numEvents = 'FREE IMPROV!';
       break;
     case (data.pitch == '24000'):
-      backerColor = backerColor;
+      numEvents = numEvents;
       break;
   };
-  document.body.style.backgroundColor = backerColor
-  
+  numsDiv.innerHTML = numEvents
+
 });
-
-
-
-
