@@ -1,6 +1,9 @@
 const socket = io.connect();
 
 let backerColor = null;
+let noteDiv = document.getElementById('note');
+let noteSrc = '';
+
 
 
 socket.on('frequency', function(data) {
@@ -31,6 +34,52 @@ socket.on('frequency', function(data) {
       break;
   };
   document.body.style.backgroundColor = backerColor
+  
+});
+
+socket.on('frequency', function(data) {
+  switch (true) {
+    case (data.note < 'C'):
+      noteSrc = './images/c.png';
+      break;
+    case (data.note < 'C#'):
+      noteSrc = './images/cSharp.png';
+      break;
+    case (data.note < 'D'):
+      noteSrc = './images/d.png';
+      break;
+    case (data.note < 'D#'):
+      noteSrc = './images/dSharp.png';
+      break;
+    case (data.note < 'E'):
+      noteSrc = './images/e.png';
+      break;
+    case (data.note < 'F'):
+      noteSrc = './images/f.png';
+      break;
+    case (data.note < 'F#'):
+      noteSrc = './images/fSharp.png';
+      break;
+    case (data.note < 'G'):
+      noteSrc = './images/g.png';
+      break;
+    case (data.note < 'G#'):
+      noteSrc = './images/gSharp.png';
+      break;
+    case (data.note < 'A'):
+      noteSrc = './images/a.png';
+      break;
+    case (data.note < 'A#'):
+      noteSrc = './images/aSharp.png';
+      break;
+    case (data.note < 'B'):
+      noteSrc = './images/b.png';
+      break;
+    case (data.note < '24000'):
+      noteSrc = noteSrc;
+      break;
+  };
+  noteDiv.src = noteSrc
   
 });
 

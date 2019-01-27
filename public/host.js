@@ -11,11 +11,15 @@ input.play(); // Calls for input
 tuner.updatePitch(); // The tuner is now calculating the pitch and note name of its input 60 times per second.
 
 let inputFreq = null;
+let inputNote = null;
 
 let logPitch = function() {
   // console.log(tuner.pitch, tuner.noteName);
   requestAnimationFrame(logPitch);
-  inputFreq = tuner.pitch
+  inputFreq = tuner.pitch;
+  inputNote = tuner.noteName;
+  
+
   
 };
 
@@ -32,9 +36,10 @@ setInterval(function() { buttonBroadcast.click() }, 20)
 
 buttonBroadcast.addEventListener('click', function(e) {
   e.preventDefault();
-  console.log(inputFreq);
+  console.log(inputFreq, inputNote);
   socket.emit('frequency', {
-    pitch: inputFreq
+    pitch: inputFreq,
+    note: inputNote
   });
 });
 
