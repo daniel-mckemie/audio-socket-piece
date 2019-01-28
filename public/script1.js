@@ -3,9 +3,11 @@ const socket = io.connect();
 let backerColor = null;
 let noteDiv = document.getElementById('note');
 let noteSrc = '';
+let shapeDiv = document.getElementById('shape');
+let shapeSrc = null;
 
 
-
+// Background change
 socket.on('frequency', function(data) {
   switch (true) {
     case (data.pitch < '200'):
@@ -39,47 +41,66 @@ socket.on('frequency', function(data) {
 
 socket.on('frequency', function(data) {
   switch (true) {
-    case (data.note < 'C'):
+    case (data.note == 'C4'):
       noteSrc = './images/c.png';
       break;
-    case (data.note < 'C#'):
+    case (data.note == 'C#4'):
       noteSrc = './images/cSharp.png';
       break;
-    case (data.note < 'D'):
+    case (data.note == 'D4'):
       noteSrc = './images/d.png';
       break;
-    case (data.note < 'D#'):
+    case (data.note == 'D#4'):
       noteSrc = './images/dSharp.png';
       break;
-    case (data.note < 'E'):
+    case (data.note == 'E4'):
       noteSrc = './images/e.png';
       break;
-    case (data.note < 'F'):
+    case (data.note == 'F4'):
       noteSrc = './images/f.png';
       break;
-    case (data.note < 'F#'):
+    case (data.note == 'F#4'):
       noteSrc = './images/fSharp.png';
       break;
-    case (data.note < 'G'):
+    case (data.note == 'G4'):
       noteSrc = './images/g.png';
       break;
-    case (data.note < 'G#'):
+    case (data.note == 'G#4'):
       noteSrc = './images/gSharp.png';
       break;
-    case (data.note < 'A'):
+    case (data.note == 'A4'):
       noteSrc = './images/a.png';
       break;
-    case (data.note < 'A#'):
+    case (data.note == 'A#4'):
       noteSrc = './images/aSharp.png';
       break;
-    case (data.note < 'B'):
+    case (data.note == 'B4'):
       noteSrc = './images/b.png';
       break;
-    case (data.note < '24000'):
+    case (data.note == 'undefined'):
       noteSrc = noteSrc;
       break;
   };
-  noteDiv.src = noteSrc
+  noteDiv.src = noteSrc;
+  
+});
+
+socket.on('frequency', function(data) {
+  switch (true) {
+    case (data.note == 'F2'):
+      shapeSrc = 'square';
+      break;
+    case (data.note == 'D3'):
+      shapeSrc = 'triangle';
+      break;
+    case (data.note == 'G6'):
+      shapeSrc = 'circle';
+      break;
+    case (data.note == 'undefined'):
+      noteSrc = noteSrc;
+      break;
+  };
+  shapeDiv.src = shapeSrc;
   
 });
 
