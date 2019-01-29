@@ -4,10 +4,12 @@ let backerColor = null;
 let noteDiv = document.getElementById('note');
 let noteSrc = '';
 let shapeDiv = document.getElementById('shape');
-let shapeSrc = null;
+let shapeSrc = '';
+let wordDiv = document.getElementById('word');
 
 
-// Background change
+// Background color socket
+
 socket.on('frequency', function(data) {
   switch (true) {
     case (data.pitch < '200'):
@@ -34,10 +36,14 @@ socket.on('frequency', function(data) {
     case (data.pitch == '24000'):
       backerColor = backerColor;
       break;
+    default:
+      backerColor = 'red';
   };
   document.body.style.backgroundColor = backerColor
   
 });
+
+// Pitch socket
 
 socket.on('frequency', function(data) {
   switch (true) {
@@ -79,31 +85,48 @@ socket.on('frequency', function(data) {
       break;
     case (data.note == 'undefined'):
       noteSrc = noteSrc;
-      break;
+      break;  
   };
   noteDiv.src = noteSrc;
   
 });
 
+// Shape socket
+
 socket.on('frequency', function(data) {
   switch (true) {
-    case (data.note == 'F2'):
-      shapeSrc = 'square';
+    case (data.note == 'F3'):
+      shapeSrc = './images/square.png';      
       break;
-    case (data.note == 'D3'):
-      shapeSrc = 'triangle';
+    case (data.note == 'D5'):
+      shapeSrc = './images/triangle.png';
       break;
-    case (data.note == 'G6'):
-      shapeSrc = 'circle';
+    case (data.note == 'C6'):
+      shapeSrc = './images/circle.png';
       break;
     case (data.note == 'undefined'):
-      noteSrc = noteSrc;
+      shapeSrc = shapeSrc;
       break;
+    default:
+      shapeSrc = ''
   };
   shapeDiv.src = shapeSrc;
   
 });
 
+
+// Word socket
+
+socket.on('frequency', function(data) {
+  switch (true) {
+    case(data.pitch < '1000'):
+      wordDiv.innerText = 'WORDY!'
+      break;
+    default:
+      wordDiv.innerText = ''
+  };
+
+})
 
 
 
