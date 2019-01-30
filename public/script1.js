@@ -7,7 +7,6 @@ let shapeDiv = document.getElementById('shape');
 let shapeSrc = '';
 let wordDiv = document.getElementById('word');
 
-
 // Background color socket
 
 socket.on('frequency', function(data) {
@@ -28,10 +27,10 @@ socket.on('frequency', function(data) {
       backerColor = 'blue';
       break;
     case (data.pitch < '6500'):
-      backerColor = 'indigo';
+      backerColor = 'purple';
       break;
     case (data.pitch < '20000'):
-      backerColor = 'violet';
+      backerColor = 'indigo';
       break;
     case (data.pitch == '24000'):
       backerColor = backerColor;
@@ -45,88 +44,97 @@ socket.on('frequency', function(data) {
 
 // Pitch socket
 
-socket.on('frequency', function(data) {
-  switch (true) {
-    case (data.note == 'C4'):
-      noteSrc = './images/c.png';
-      break;
-    case (data.note == 'C#4'):
-      noteSrc = './images/cSharp.png';
-      break;
-    case (data.note == 'D4'):
-      noteSrc = './images/d.png';
-      break;
-    case (data.note == 'D#4'):
-      noteSrc = './images/dSharp.png';
-      break;
-    case (data.note == 'E4'):
-      noteSrc = './images/e.png';
-      break;
-    case (data.note == 'F4'):
-      noteSrc = './images/f.png';
-      break;
-    case (data.note == 'F#4'):
-      noteSrc = './images/fSharp.png';
-      break;
-    case (data.note == 'G4'):
-      noteSrc = './images/g.png';
-      break;
-    case (data.note == 'G#4'):
-      noteSrc = './images/gSharp.png';
-      break;
-    case (data.note == 'A4'):
-      noteSrc = './images/a.png';
-      break;
-    case (data.note == 'A#4'):
-      noteSrc = './images/aSharp.png';
-      break;
-    case (data.note == 'B4'):
-      noteSrc = './images/b.png';
-      break;
-    case (data.note == 'undefined'):
-      noteSrc = noteSrc;
-      break;  
-  };
-  noteDiv.src = noteSrc;
+// socket.on('frequency', function(data) {
+//   switch (true) {
+//     case (data.note == 'C4'):
+//       noteSrc = './images/c.png';
+//       break;
+//     case (data.note == 'C#4'):
+//       noteSrc = './images/cSharp.png';
+//       break;
+//     case (data.note == 'D4'):
+//       noteSrc = './images/d.png';
+//       break;
+//     case (data.note == 'D#4'):
+//       noteSrc = './images/dSharp.png';
+//       break;
+//     case (data.note == 'E4'):
+//       noteSrc = './images/e.png';
+//       break;
+//     case (data.note == 'F4'):
+//       noteSrc = './images/f.png';
+//       break;
+//     case (data.note == 'F#4'):
+//       noteSrc = './images/fSharp.png';
+//       break;
+//     case (data.note == 'G4'):
+//       noteSrc = './images/g.png';
+//       break;
+//     case (data.note == 'G#4'):
+//       noteSrc = './images/gSharp.png';
+//       break;
+//     case (data.note == 'A4'):
+//       noteSrc = './images/a.png';
+//       break;
+//     case (data.note == 'A#4'):
+//       noteSrc = './images/aSharp.png';
+//       break;
+//     case (data.note == 'B4'):
+//       noteSrc = './images/b.png';
+//       break;
+//     case (data.note == 'undefined'):
+//       noteSrc = noteSrc;
+//       break;  
+//   };
+//   noteDiv.src = noteSrc;
   
-});
+// });
 
 // Shape socket
 
-socket.on('frequency', function(data) {
-  switch (true) {
-    case (data.note == 'F3'):
-      shapeSrc = './images/square.png';      
-      break;
-    case (data.note == 'D5'):
-      shapeSrc = './images/triangle.png';
-      break;
-    case (data.note == 'C6'):
-      shapeSrc = './images/circle.png';
-      break;
-    case (data.note == 'undefined'):
-      shapeSrc = shapeSrc;
-      break;
-    default:
-      shapeSrc = ''
-  };
-  shapeDiv.src = shapeSrc;
+// socket.on('frequency', function(data) {
+//   switch (true) {
+//     case (data.note == 'F3'):
+//       shapeSrc = './images/square.png';      
+//       break;
+//     case (data.note == 'D5'):
+//       shapeSrc = './images/triangle.png';
+//       break;
+//     case (data.note == 'C6'):
+//       shapeSrc = './images/circle.png';
+//       break;
+//     case (data.note == 'undefined'):
+//       shapeSrc = shapeSrc;
+//       break;
+//     default:
+//       shapeSrc = ''
+//   };
+//   shapeDiv.src = shapeSrc;
   
-});
+// });
 
 
 // Word socket
 
-socket.on('frequency', function(data) {
-  switch (true) {
-    case(data.pitch < '1000'):
-      wordDiv.innerText = 'WORDY!'
-      break;
-    default:
-      wordDiv.innerText = ''
-  };
+// Random numbers will be generated every X amount
+// of seconds to change the word being displayed.
+// There is most often not a word being displayed,
+// but a global variable determines what word will
+// be displayed (maybe 6 words total?)
 
-})
+// ie. the word being displayed has no relation to
+// the incoming data.
+
+// socket.on('frequency', function(data) {
+//   switch (true) {
+//     case(data.pitch < '1000'):
+//       wordDiv.innerText = 'Focus'
+//       break;
+//     default:
+//       wordDiv.innerText = ''
+//   };
+
+// })
 
 
 

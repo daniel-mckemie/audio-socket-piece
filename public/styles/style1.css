@@ -1,33 +1,42 @@
 .flex-grid {
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
-	width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 50%;
 }
 
 .flex-grid .col {
-	flex: 1;
+  flex: 1;
 }
 
 @media (max-width: 400px) {
-	.flex-grid {
-		display: block;
-		.col {
-			width: 50%;
-			margin: 0 0 10px 0;
-		}
-	}
+  .flex-grid {
+    display: block;
+
+    .col {
+      width: 50%;
+      margin: 0 0 10px 0;
+    }
+  }
 }
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 body {
-	padding: 20px;
+  padding: 20px; 
 }
+
 .flex-grid {
-	margin: 0 0 20px 0;
+  margin: 0 0 20px 0;
 }
+
 .col {
-	padding: 20px;
+  padding: 20px;
+}
+
+#word {
+	font-size: 48px;
+  
 }
