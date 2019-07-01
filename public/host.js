@@ -19,8 +19,6 @@ let logPitch = function() {
   inputFreq = tuner.pitch;
   inputNote = tuner.noteName;
   
-
-  
 };
 
 logPitch();
