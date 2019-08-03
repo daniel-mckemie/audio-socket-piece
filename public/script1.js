@@ -32,7 +32,7 @@ socket.on('frequency', function(data) {
     case (data.pitch < '20000'):
       backColor = 'indigo';
       break;
-    case (data.pitch == '24000'):
+    case (data.pitch == '24000'): // Prevents jumps when audio is read as a very high frequency signal
       backColor = backColor;
       break;
     default:
